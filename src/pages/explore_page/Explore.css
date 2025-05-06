@@ -1,0 +1,33 @@
+@keyframes flyEmoji1 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-20px, -150px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flyEmoji2 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(20px, -140px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flyEmoji3 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-10px, -160px);
+      opacity: 0;
+    }
+  }
+  

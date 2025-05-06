@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getFavoriteImages } from "../../utilities/api";
+import { getFavoriteImages, removeFavoriteImage } from "../../utilities/api";
+import "./FavoritesPage.css"; // <-- Import the CSS file
 
-const FavoritesPage = () => {
+const FavoritesPage = ({ token }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const data = await getFavoriteImages();
+        const data = await getFavoriteImages(token);
         setImages(data || []);
       } catch (err) {
         console.error("Failed to fetch favorite images:", err);
@@ -18,28 +19,65 @@ const FavoritesPage = () => {
     };
 
     fetchFavorites();
-  }, []);
+  }, [token]);
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  const handleDownload = async (imageUrl) => {
+    try {
+      const response = await fetch(imageUrl, { mode: "cors" });
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "favorite-image.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Download failed:", err);
+    }
+  };
+
+  const handleRemoveFavorite = async (imageId) => {
+    try {
+      await removeFavoriteImage(imageId, token);
+      setImages((prev) => prev.filter((img) => img.id !== imageId));
+    } catch (err) {
+      console.error("Failed to remove from favorites:", err);
+    }
+  };
+
+  if (loading) return <div className="loading">Loading...</div>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">My Favorite Images</h1>
+    <div className="favorites-container">
+      <h1 className="favorites-title">My Favorite Images</h1>
       {images.length === 0 ? (
-        <p className="text-center text-gray-500">You have no favorite images.</p>
+        <p className="no-favorites">You have no favorite images.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="favorites-scroll">
           {images.map((image) => (
-            <div
-              key={image.id}
-              className="border rounded-2xl shadow-md p-3 bg-white"
-            >
+            <div key={image.id} className="favorite-card">
               <img
                 src={image.image_url}
                 alt={image.prompt}
-                className="w-full h-64 object-cover rounded-xl mb-2"
+                className="favorite-image"
               />
-              <p className="text-sm text-gray-700 text-center">{image.prompt}</p>
+              <p className="favorite-prompt">{image.prompt}</p>
+              <div className="button-group">
+                <button
+                  onClick={() => handleDownload(image.image_url)}
+                  className="btn download-btn"
+                >
+                  Download
+                </button>
+                <button
+                  onClick={() => handleRemoveFavorite(image.id)}
+                  className="btn remove-btn"
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           ))}
         </div>

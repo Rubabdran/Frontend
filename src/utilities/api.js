@@ -117,3 +117,27 @@ export const getFavoriteImages = async () => {
   return response;
 };
 
+export async function removeFavoriteImage(imageId) {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`http://localhost:8000/images/favorites/${imageId}/`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Failed to remove favorite image");
+  }
+
+  return true;
+}
+
+export const postComment = async (imageId, emoji) => {
+  const response = await sendRequest(`http://localhost:8000/images/${imageId}/comments/`, "POST");
+
+  console.log("Explore public images response:", response);
+  return response;
+};
+
