@@ -59,7 +59,7 @@ export default function SignupPage({ setUser }) {
             {/* SIGN UP FORM */}
             <div className="form-container sign-up">
                 <form onSubmit={handleSubmit}>
-                    <h2>Create Account</h2>
+                    <h2 color="black">Create Account</h2>
 
 
                     <input
