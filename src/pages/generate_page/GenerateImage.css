@@ -81,6 +81,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 990px;
   padding: 40px;
   color: white;
   text-align: center;
@@ -140,10 +141,21 @@ body {
 
 .robot-img {
   position: absolute;
-  top: 420px;  /* Move it up */
-  left: 430px;     /* Align to the left */
-  width: 270px;  /* Adjust size if necessary */
-  height: auto;
+  top: 380px;
+  left: -5px;
+  width: 380px;
+  height: 380px;
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+/* Animation keyframes */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Adjust the distance as needed */
+  }
 }
 
 .popup-overlay {
@@ -160,7 +172,7 @@ body {
 }
 
 .popup-content {
-  background: #fff;
+  background: #f8f8f8;
   padding: 20px;
   border-radius: 12px;
   max-width: 90%;
@@ -177,6 +189,7 @@ body {
   max-width: 100%;
   height: auto;
   margin-bottom: 15px;
+  border-radius: 12px;
 }
 
 .popup-content .button-group button {
@@ -211,6 +224,7 @@ body {
   position: relative;
   width: 24em;
   margin: 0 auto;
+  left: 180px;
   border-right: 2px solid rgba(255,255,255,.75);
   font-size: 30px;
   text-align: center;

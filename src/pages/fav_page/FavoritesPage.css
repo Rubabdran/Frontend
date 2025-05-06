@@ -1,83 +1,189 @@
+
+
 .favorites-container {
-    padding: 1.5rem;
-  }
+  padding: 1.5rem;
+}
+
+.favorites-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.no-favorites,
+.loading {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 2rem;
+}
+
+.favorites-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.favorite-card {
+  width: 280px;
+  height: 460px; /* Slightly taller to accommodate bigger image */
+  background: linear-gradient(135deg, #fff8dc, #fceabb);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.favorite-image {
+  width: 100%;
+  height: 290px; /* Increased from 200px */
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.favorite-prompt {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Updated button styles */
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff76;
+  color: rgb(70, 67, 67);
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #ffffff;
   
-  .favorites-title {
-    text-align: center;
-    font-size: 1.75rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+  transform: scale(1.03);
+}
+
+.favorites-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.favorites-scroll::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+/* Firefox scrollbar styling */
+.favorites-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #683ca6b1 #f3f4f6;
+}
+
+/* Alternate gradient backgrounds */
+.card-yellow {
+  background: linear-gradient(135deg, #fff8dc, #fceabb);
+}
+
+.card-orange {
+  background: linear-gradient(135deg, #fde68a, #fca5a5);
+}
+
+.card-pink {
+  background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
+}
+
+.card-blue {
+  background: linear-gradient(135deg, #c7d2fe, #a5b4fc);
+}
+
+/* Animation on card load */
+.favorite-card {
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .no-favorites {
-    text-align: center;
-    color: #6b7280;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .loading {
-    text-align: center;
-    margin-top: 2rem;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #121212;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.split-text-container {
+  display: flex;
+  font-size: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  overflow: hidden;
+}
+
+.text-part {
+  left: 80px;
+  display: inline-block;
+  position: relative;
+  transform: translateX(0);
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.text-part.left {
+  transform: translateX(-200%);
+  animation-name: slide-in-left;
+}
+
+.text-part.right {
+  transform: translateX(200%);
+  animation-name: slide-in-right;
+}
+
+@keyframes slide-in-left {
+  0% {
+      transform: translateX(-200%);
   }
-  
-  .favorites-scroll {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scroll-behavior: smooth;
+  100% {
+      transform: translateX(0);
   }
-  
-  .favorite-card {
-    min-width: 250px;
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex-shrink: 0;
+}
+
+@keyframes slide-in-right {
+  0% {
+      transform: translateX(200%);
   }
-  
-  .favorite-image {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 0.75rem;
-    margin-bottom: 0.75rem;
+  100% {
+      transform: translateX(0);
   }
-  
-  .favorite-prompt {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #374151;
-    margin-bottom: 0.75rem;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .btn {
-    padding: 0.5rem 0.75rem;
-    border: none;
-    border-radius: 0.375rem;
-    color: white;
-    cursor: pointer;
-    font-size: 0.875rem;
-  }
-  
-  .download-btn {
-    background-color: #3b82f6;
-  }
-  
-  .download-btn:hover {
-    background-color: #2563eb;
-  }
-  
-  .remove-btn {
-    background-color: #ef4444;
-  }
-  
-  .remove-btn:hover {
-    background-color: #dc2626;
-  }
-  
+}
