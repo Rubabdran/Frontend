@@ -135,7 +135,7 @@ export async function removeFavoriteImage(imageId) {
 }
 
 export const postComment = async (imageId, emoji) => {
-  const response = await sendRequest(`http://localhost:8000/images/${imageId}/comments/`, "POST");
+  const response = await sendRequest(`/images/${imageId}/comments/`, "POST",{emoji:emoji});
 
   console.log("Explore public images response:", response);
   return response;
