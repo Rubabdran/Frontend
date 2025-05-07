@@ -1,13 +1,56 @@
-# React + Vite
+# AI Image Generator - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Image Generation web app, built using **React**. Users can register, log in, generate images from text prompts, favorite them, make them public, and comment using emojis.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⭐ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Frontend
+- **React**
+- **JavaScript**
+- **CSS**
+- **JWT for Authentication**
+- **Fetch API for backend communication**
+- **Docker (for deployment & local containerized setup)**
+
+---
+
+## ⭐ Features
+
+-  User Authentication (Sign Up / Log In / Log Out)
+-  Text-to-Image Generation
+-  Favorite & Unfavorite Images
+-  Emoji-Only Comments
+-  Explore Public Images
+-  Download Images
+-  Puplish Images
+
+---
+## ⭐ IceBox Features (Future Ideas)
+- Search bar for filtering images
+- Comment threads and replies
+- Follow/Unfollow
+- User profile pages
+- Categories
+
+---
+## ⭐ Installation (Docker)
+
+```bash
+# Clone the repo
+git clone https://github.com/Rubabdran/Frontend
+cd frontend
+
+# Build & run with Docker
+docker build -t frontend .
+docker run -p 5173:5173 frontend
+```
+
+## 🔗 Links
+
+- **Backend Repository**: [View Backend Repo](https://github.com/Rubabdran/Backend.git)
+
+---
+
+ 
