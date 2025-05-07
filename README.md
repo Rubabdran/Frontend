@@ -2,7 +2,7 @@
 
 This is the frontend for the Image Generation web app, built using **React**. Users can register, log in, generate images from text prompts, favorite them, make them public, and comment using emojis.
 
-
+![alt text](image.png)
 ---
 
 ## ⭐ Tech Stack
@@ -33,6 +33,7 @@ This is the frontend for the Image Generation web app, built using **React**. Us
 - Follow/Unfollow
 - User profile pages
 - Categories
+- Notification 
 
 ---
 ## ⭐ Installation (Docker)
