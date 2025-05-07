@@ -1,30 +1,3 @@
-// import React from 'react';
-// import { Link, useNavigate } from 'react-router';
-// import './nav.css'
-
-
-// export default function Navbar({setUser}) {
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     localStorage.removeItem('token');
-//     setUser(null)
-//     navigate('/login');
-//   };
-
-//   return (
-//     <nav id='nav'>
-//       <div>Image Generation</div>
-//       <div id='links'>
-//         <Link to="/generate" >Home</Link>
-//         <Link to="/favorites">Favorites</Link>
-//         <Link to="/explore">Explore</Link>
-//         <button onClick={handleLogout} >Logout</button>
-//       </div>
-//     </nav>
-//   );
-// }
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router';
 import { FaHome, FaHeart, FaCompass, FaSignOutAlt, FaUser } from 'react-icons/fa';
