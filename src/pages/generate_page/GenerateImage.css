@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+/* @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 * {
   margin: 0;
@@ -9,7 +9,6 @@
 body {
   margin-top: 4em;
   padding: 5em;
-  /* background-color: #673ab7; */
   background: linear-gradient(to left, #8f94fb, #4e54c8)!important;
   font-family: 'Exo', sans-serif;
 }
@@ -22,11 +21,259 @@ body {
 }
 
 .area {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+.circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+.circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+.circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+.circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+.circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.generate-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 990px;
+  padding: 40px;
+  color: white;
+  text-align: center;
+}
+
+.left-side {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top:120px; 
+}
+
+.robot-title {
+  font-size: 24px;
+  margin-bottom: 10px; 
+  margin-top: -20px;   
+  color: #fff;
+}
+
+.prompt-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.generate-btn {
+  margin-top: 20px;
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4e54c8;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.generate-btn:hover {
+  background-color: #5f65e0;
+}
+
+.right-side {
+  
+    position: absolute;
+    bottom: 490px; 
+    left: 20px;
+
+}
+
+.robot-img {
+  position: absolute;
+  top: 380px;
+  left: -5px;
+  width: 380px;
+  height: 380px;
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); 
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 90%;
+  width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-content h3 {
+  margin-bottom: 10px;
+}
+
+.popup-content img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+.popup-content .button-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4e54c8;
+  color: white;
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.popup-content .button-group button:hover {
+  background-color: #5f65e0;
+  transform: scale(1.05);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.cursor {
+  position: relative;
+  width: 24em;
+  margin: 0 auto;
+  left: 180px;
+  border-right: 2px solid rgba(255,255,255,.75);
+  font-size: 30px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+  font-family: 'Anonymous Pro', monospace;
+  color: #f1f1f1;
+}
+
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkingCursor {
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+body {
+
+  background: linear-gradient(to left, #8f94fb, #4e54c8)!important;
+  font-family: 'Exo', sans-serif;
+}
+
+.full-page-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area {
   /* background: linear-gradient(to left, #8f94fb, #4e54c8); */
   position: fixed;
   width: 100%;
   height: 100vh;
   z-index: 0;
+
 }
 
 .circles {
@@ -164,7 +411,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.325);
   z-index: 10;
   display: flex;
   align-items: center;
@@ -172,7 +419,7 @@ body {
 }
 
 .popup-content {
-  background: #f8f8f8;
+  background: #1a19199c;
   padding: 20px;
   border-radius: 12px;
   max-width: 90%;
@@ -183,6 +430,7 @@ body {
 
 .popup-content h3 {
   margin-bottom: 10px;
+  color: #fff3f3;
 }
 
 .popup-content img {
