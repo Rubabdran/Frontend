@@ -1,13 +1,11 @@
+//---------------import--------------//
+
 import React, { useState } from "react";
-import {
-  createImage,
-  updateImagePublic,
-  toggleFavorite,
-} from "../../utilities/api";
+import {createImage,updateImagePublic,toggleFavorite,} from "../../utilities/api";
 import "./GenerateImage.css";
 import robot from "../../assets/images/robot3.svg";
 
-
+//----------------state and functions--------------//
 const GenerateImage = ({ token }) => {
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
@@ -25,7 +23,7 @@ const GenerateImage = ({ token }) => {
       setImageUrl(pollinationsUrl);
       const res = await createImage(prompt, pollinationsUrl, false, token);
       setImageId(res.id);
-      setShowPopup(true); // Show the popup
+      setShowPopup(true); 
     } catch (err) {
       console.error(err);
       alert("Failed to save image.");
@@ -73,6 +71,7 @@ const GenerateImage = ({ token }) => {
     }
   };
 
+  //------------------------layout--------------//
   return (
     <div className="full-page-wrapper">
       <div className="area">
@@ -107,7 +106,6 @@ const GenerateImage = ({ token }) => {
 <img src={robot} alt="AI Robot" className="robot-img" />
     
       </div>
-      {/* Popup for generated image */}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-content">

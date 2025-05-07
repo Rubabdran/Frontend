@@ -1,8 +1,12 @@
+//---------------import--------------//
 
 import React, { useState, useEffect } from 'react';
 import './Explore.css';
 import { getExploreImages, toggleFavorite, postComment } from "../../utilities/api";
 
+//----------------functions--------------//
+
+//track state
 const ExplorePage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,6 +19,7 @@ const ExplorePage = () => {
     fetchImages();
   }, []);
 
+  //Calls the API to load images
   const fetchImages = async () => {
     try {
       const response = await getExploreImages();
@@ -27,6 +32,7 @@ const ExplorePage = () => {
     }
   };
 
+  //Toggles the favorite status of an image and updates the local state
   const handleFavorite = async (imageId) => {
     try {
       await toggleFavorite(imageId);
@@ -38,6 +44,7 @@ const ExplorePage = () => {
     }
   };
 
+  //download handle 
   const handleDownload = async (imageUrl, prompt) => {
     try {
       const urlToFetch = imageUrl.startsWith("http") ? imageUrl : `http://localhost:8000${imageUrl}`;
@@ -57,6 +64,7 @@ const ExplorePage = () => {
     }
   };
 
+  //submit emoji as comment and show animated flying emoji for 2s only
   const handleEmojiComment = async (imageId, emoji) => {
     try {
       setComments(prev => ({ ...prev, [imageId]: emoji }));
@@ -89,6 +97,7 @@ const ExplorePage = () => {
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
 
+ //--------------------------layout--------------------------//
   return (
     <div className="explore-container">
       <div className="image-grid">

@@ -1,6 +1,10 @@
+//----------------import-------------//
+
 import React, { useEffect, useState } from "react";
 import { getFavoriteImages, removeFavoriteImage } from "../../utilities/api";
 import "./FavoritesPage.css";
+
+//-------------functions------------//
 
 const FavoritesPage = ({ token }) => {
   const [images, setImages] = useState([]);
@@ -48,6 +52,8 @@ const FavoritesPage = ({ token }) => {
   };
 
   if (loading) return <div className="loading">Loading...</div>;
+
+  //------------------------layout-----------------------//
 
   return (
     <div className="favorites-container">

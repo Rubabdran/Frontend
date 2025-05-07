@@ -1,7 +1,11 @@
+// --------------- import-------------------//
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router';
 import { FaHome, FaHeart, FaCompass, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import './nav.css';
+
+//------------functional component----------//
 
 export default function Navbar({ setUser, user }) {
   const navigate = useNavigate();
@@ -12,6 +16,8 @@ export default function Navbar({ setUser, user }) {
     navigate('/login');
   };
 
+ //------------------layout----------------//
+ 
   return (
     <nav className="navbar">
       <div className="navbar-brand">

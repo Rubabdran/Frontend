@@ -1,8 +1,11 @@
-import sendRequest from "./sendRequest";
+//Imports a helper function sendRequest to simplify API calls
+import sendRequest from "./sendRequest"; 
+
+// paths
 const BASE_URL = "http://localhost:8000"; 
 const url = "/users/";
 
-//-----------------------user 
+//-----------------user--------------// 
 
 export async function signup(formData) {
   try {
@@ -59,7 +62,7 @@ export async function getUser() {
   }
 }
 
-//-----------------local storage
+//--------------local storage-------------//
 
 
 export function getAuthHeaders() {
@@ -70,7 +73,7 @@ export function getAuthHeaders() {
   };
 }
 
-//------------------------image
+//------------------image---------------//
 
 export const hello = async () => {
 
