@@ -51,6 +51,7 @@ docker run -p 5173:5173 frontend
 ## 🔗 Links
 
 - **Backend Repository**: [View Backend Repo](https://github.com/Rubabdran/Backend.git)
+- **Deploy**: (http://localhost:5173/login)
 
 ---
 
